@@ -3,7 +3,36 @@
 }
 
 .todo-item p {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
     margin: 0;
+    max-width: 100%;
+}
+
+.todo-item .todo-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    max-width: 80%;
+}
+
+.todo-item .trash {
+    color: #aaa;
+    width: 0px;
+    opacity: 0.0;
+    transition: all;
+    transition-duration: 1s;
+}
+
+.todo-item p:hover .trash{
+    width: 40px;
+    opacity: 1.0;
+}
+
+.todo-item .trash:hover {
+    transition: none;
+    color: #FF4500;
 }
 
 .todo-item .todo {
@@ -17,4 +46,20 @@
 .completed {
     text-decoration: line-through;
     color: #FF4500;
+}
+
+.todo-item .check-container {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border: 2px solid #666;
+    height: 10px;
+    margin-right: 10px;
+    width:10px;
+}
+
+.todo-item .check-container .fa-check {
+    color: #1FB080;
+    margin-left: 5px;
+    margin-top: -8px;
 }

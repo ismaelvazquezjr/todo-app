@@ -3,6 +3,7 @@
 .todo-app * {
     scrollbar-width: thin;
     scrollbar-color: #f4f4f4 #fff;
+    /* overflow-y: hidden; */
 }
 
 .todo-app {
@@ -14,7 +15,7 @@
     flex-direction: column;
     margin-top: 5%;
     max-height: 400px;
-    min-width: 370px;
+    width: 370px;
     padding: 50px 0;
 }
 
@@ -26,6 +27,8 @@
     text-align: left;
     height: 100%;
     width: 75%;
+    overflow-x: hidden;
+    margin-top: 15px;
 }
 
 .todo-app #new-todo {

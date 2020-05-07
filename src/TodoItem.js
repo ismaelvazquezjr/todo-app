@@ -43,7 +43,20 @@ class TodoItem extends Component {
     render() {
         return (
             <div className="todo-item" onClick={this.handleClick}>
-                <p className={`${this.state.completed && 'completed'}`}><span className={`${this.state.completed ? 'todo-done' : 'todo'}`}>{this.props.todo}</span></p>
+                <p>
+                    <span className="todo-container">
+                        <div className="check-container">
+                            {this.state.completed && <i className="fas fa-check"></i>}
+                        </div>
+                        <span className={`${this.state.completed && 'completed'}`}>
+                            <span className={`${this.state.completed ? 'todo-done' : 'todo'}`}>{this.props.todo}
+                            </span>
+                        </span>
+                    </span>
+                    <span onClick={() => this.props.removeTodo(this.props.id)}>
+                        <i className="far fa-trash-alt trash"></i>
+                    </span>
+                </p>
             </div>
         );
     }
