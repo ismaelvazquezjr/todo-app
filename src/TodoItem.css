@@ -1,0 +1,20 @@
+.todo-item {
+    cursor: pointer;
+}
+
+.todo-item p {
+    margin: 0;
+}
+
+.todo-item .todo {
+    color: #666;
+}
+
+.todo-item .todo-done {
+    color: #aaa;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #FF4500;
+}

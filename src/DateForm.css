@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+
+.date-form * {
+    padding: 0;
+    margin: 0;
+}
+
+.date-form {
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+}
+
+.date-form .day {
+    color: #333;
+    font-weight: 100;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.date-form .date {
+    color: #ccc;
+}
