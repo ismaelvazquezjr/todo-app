@@ -1,3 +1,12 @@
+## About
+
+This is a simple Todo application written in React. The image you see when there are no tasks was taken from Undraw. 
+
+The UI was "inspired" from [here](https://uimovement.com/media/resource_image/gif_thumb_thumbnail_eW6CDjL.jpg).
+
+## Depenencies
+https://www.npmjs.com/package/react-particles-js
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
