@@ -45,9 +45,9 @@ class TodoItem extends Component {
             <div className="todo-item" onClick={this.handleClick}>
                 <p>
                     <span className="todo-container">
-                        <div className="check-container">
+                        <span className="check-container">
                             {this.state.completed && <i className="fas fa-check"></i>}
-                        </div>
+                        </span>
                         <span className={`${this.state.completed && 'completed'}`}>
                             <span className={`${this.state.completed ? 'todo-done' : 'todo'}`}>{this.props.todo}
                             </span>
