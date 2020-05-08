@@ -6,12 +6,10 @@ class TodoItem extends Component {
         super(props);
 
         this.state = {
-            completed: false,
             delete: false
         }
 
         this.timerHandle = null;
-
         this.handleClick = this.handleClick.bind(this);
     }
 
@@ -21,12 +19,12 @@ class TodoItem extends Component {
 
     handleClick() {
         if (this.state.delete) {
-            this.props.removeTodo(this.props.id);
-        }
+            this.props.removeTodo(this.props.index);
+        } else {
 
-        this.setState(currState => {
-            return { completed: !currState.completed, delete: true };
-        });
+        this.props.changeStatus(this.props.index, this.props.completed);
+
+        this.setState({ delete: true });
 
         // Ensures only one instance of this.timerHandle exists to prevent 
         // memory leaks.
@@ -39,6 +37,7 @@ class TodoItem extends Component {
             }, 500);
         }
     }
+    }
 
     render() {
         return (
@@ -46,14 +45,14 @@ class TodoItem extends Component {
                 <p>
                     <span className="todo-container">
                         <span className="check-container">
-                            {this.state.completed && <i className="fas fa-check"></i>}
+                            {this.props.completed === 1 && <i className="fas fa-check"></i>}
                         </span>
-                        <span className={`${this.state.completed && 'completed'}`}>
-                            <span className={`${this.state.completed ? 'todo-done' : 'todo'}`}>{this.props.todo}
+                        <span className={`${this.props.completed === 1&& 'completed'}`}>
+                            <span className={`${this.props.completed === 1 ? 'todo-done' : 'todo'}`}>{this.props.todo}
                             </span>
                         </span>
                     </span>
-                    <span onClick={() => this.props.removeTodo(this.props.id)}>
+                    <span onClick={() => this.props.removeTodo(this.props.index)}>
                         <i className="far fa-trash-alt trash"></i>
                     </span>
                 </p>

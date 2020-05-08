@@ -10,19 +10,50 @@ class TodoApp extends Component {
         super(props);
 
         this.state = {
-            newTodo: "",
+            task: "",
             todos: []
         }
 
         this.changeHandler = this.changeHandler.bind(this);
         this.addItem = this.addItem.bind(this);
         this.removeTodo = this.removeTodo.bind(this);
+        this.updateStatus = this.updateStatus.bind(this);
+        this.getTasks = this.getTasks.bind(this);
+    }
+
+    componentDidMount() {
+        fetch("/get")
+        .then(res => res.json())
+        .then(data => {
+            if (data === null) return;
+            this.setState({todos: data});
+        });
+        setInterval(() => {
+            this.getTasks();
+        }, 5000);
+    }
+
+    getTasks() {
+        fetch("/get")
+        .then(res => res.json())
+        .then(data => {
+            if (data === null) return;
+            this.setState({todos: data});
+        });
     }
 
     changeHandler(evt) {
         this.setState({
             [evt.target.name]: [evt.target.value]
         });
+    }
+
+    updateStatus(idx, status) {
+        const endpoint = "/update?id=" + this.state.todos[idx].id;
+        fetch(endpoint)
+        .then(() => {
+            this.getTasks();
+        })
     }
 
     removeTodo(idx) {
@@ -33,13 +64,13 @@ class TodoApp extends Component {
 
     addItem() {
         const newTodoObj = {
-            todo: this.state.newTodo,
+            task: this.state.task,
             id: uuid()
         };
         this.setState(currState => {
             return {
                 todos: [...currState.todos, newTodoObj],
-                newTodo: ""
+                task: ""
             }
         });
     }
@@ -49,9 +80,18 @@ class TodoApp extends Component {
             <div className="todo-app">
                 <DateForm />
                 <div className="todos-container">
-                    {this.state.todos.length > 0 ? this.state.todos.map((todo, i)=> <TodoItem key={todo.id} todo={todo.todo} id={i} removeTodo={this.removeTodo}/>) : <img className="empty-todo-image" src={emptyImage} alt="Blank todo list" />}
+                    {this.state.todos.length > 0 ? 
+                        this.state.todos.map((todo, i)=> 
+                        <TodoItem 
+                        key={todo.id} 
+                        todo={todo.task} 
+                        index={i} id={todo.id} 
+                        completed={todo.completed} 
+                        changeStatus={this.updateStatus} 
+                        removeTodo={this.removeTodo}/>) 
+                        : <img className="empty-todo-image" src={emptyImage} alt="Blank todo list" />}
                 </div>      
-                <input type="text" placeholder="Add new todo item here..." name="newTodo" id="new-todo" value={this.state.newTodo} onChange={this.changeHandler} onKeyPress={evt => {if (evt.key === 'Enter') this.addItem()}} />
+                <input type="text" placeholder="Add new todo item here..." name="task" id="new-todo" value={this.state.task} onChange={this.changeHandler} onKeyPress={evt => {if (evt.key === 'Enter') this.addItem()}} />
                 <button className="add-button" onClick={this.addItem}><i className="fas fa-plus"></i></button>
             </div>
         )
