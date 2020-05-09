@@ -63,6 +63,7 @@
 }
 
 .todo-app .add-button .fas {
+    position: absolute;
     color: #fff;
     font-weight: 100;
     transition: all 0.3s ease-in-out 0s;
