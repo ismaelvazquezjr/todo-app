@@ -1,6 +1,6 @@
 ## About
 
-The React frontend component is being hosted on a shared namecheap server while the database and backend server are sitting in separate dockerized containers on a digital ocean ubuntu instance.
+The React frontend component is being hosted on a shared namecheap server while the database and backend server are sitting in separate dockerized containers on a digital ocean ubuntu instance. [Learn More Here](https://medium.com/@vazquezjrismael/what-i-learned-building-a-todo-application-with-react-go-8e96ca79cd57)
 
 The image you see when there are no tasks was taken from Undraw. 
 
