@@ -1,6 +1,8 @@
 ## About
 
-This is a simple Todo application written in React. The image you see when there are no tasks was taken from Undraw. 
+The React frontend component is being hosted on a shared namecheap server while the database and backend server are sitting in separate dockerized containers on a digital ocean ubuntu instance.
+
+The image you see when there are no tasks was taken from Undraw. 
 
 The UI was "inspired" from [here](https://uimovement.com/media/resource_image/gif_thumb_thumbnail_eW6CDjL.jpg).
 
